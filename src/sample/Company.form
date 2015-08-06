@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="sample.Company">
+  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="11" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="549" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="e5d18" class="javax.swing.JButton" binding="getResultButton" default-binding="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Get result"/>
+        </properties>
+      </component>
+      <hspacer id="a6803">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="62a7b" class="javax.swing.JLabel" binding="label_revenue">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Total revenue"/>
+        </properties>
+      </component>
+      <component id="536e5" class="javax.swing.JTextField" binding="textField_revenue">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="100000"/>
+        </properties>
+      </component>
+      <component id="41bc2" class="javax.swing.JLabel" binding="label_income">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Net income"/>
+        </properties>
+      </component>
+      <component id="dcbdc" class="javax.swing.JTextField" binding="textField_income">
+        <constraints>
+          <grid row="2" column="1" row-span="2" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="10000"/>
+        </properties>
+      </component>
+      <component id="4bc7a" class="javax.swing.JLabel" binding="label_debt">
+        <constraints>
+          <grid row="3" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="External debt"/>
+        </properties>
+      </component>
+      <component id="fcd03" class="javax.swing.JLabel" binding="label_capital">
+        <constraints>
+          <grid row="4" column="1" row-span="2" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Capital"/>
+        </properties>
+      </component>
+      <component id="c15d3" class="javax.swing.JTextField" binding="textField_debt">
+        <constraints>
+          <grid row="5" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="20000"/>
+        </properties>
+      </component>
+      <component id="b7cc3" class="javax.swing.JTextField" binding="textField_capital">
+        <constraints>
+          <grid row="6" column="1" row-span="2" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="50000"/>
+        </properties>
+      </component>
+      <component id="5a0" class="javax.swing.JLabel" binding="label_cash">
+        <constraints>
+          <grid row="7" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Cash"/>
+        </properties>
+      </component>
+      <component id="df606" class="javax.swing.JLabel" binding="label_receivables">
+        <constraints>
+          <grid row="8" column="1" row-span="3" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="receivables"/>
+        </properties>
+      </component>
+      <component id="80000" class="javax.swing.JTextField" binding="textField_cash">
+        <constraints>
+          <grid row="9" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="15000"/>
+        </properties>
+      </component>
+      <component id="776d" class="javax.swing.JTextField" binding="textField_receivables">
+        <constraints>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="30000"/>
+        </properties>
+      </component>
+      <component id="f391b" class="javax.swing.JLabel" binding="label_fixedAssets">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Fixed Assets"/>
+        </properties>
+      </component>
+      <component id="1eb0b" class="javax.swing.JTextField" binding="textField_fixedAssets">
+        <constraints>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="40000"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

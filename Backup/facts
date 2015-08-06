@@ -1,0 +1,12 @@
+A0: Компания перспективна flag: true init: false
+A1: Компания прибыльна        flag: true init: true
+A2: Высокий риск ликвидности     flag: false init: true
+A3: Высокая зависимость от заёмного капитала     flag: false init: true
+A4: Высокий риск дефолта    flag: false init: true
+A5: Негативная оценка рынком  flag: true init: false
+A6: Плохие ожидания инвесторов  flag: true init: false
+A7: Акции растут  flag: true init: true
+A8: Новости о компании оптимистические  flag: true init: true
+A9: Слухи хорошие  flag: true init: true
+A10: Кредитные рейтинги не ухудшились  flag: false init: true
+A999: xxx flag: true init: true
