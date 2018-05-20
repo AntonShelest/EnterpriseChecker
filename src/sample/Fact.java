@@ -57,57 +57,27 @@ public class Fact {
     }
 
     public Fact(Fact f){
-        int iden = -1;
 
+        if (f.getId() < 0) JOptionPane.showMessageDialog(null, "Fact id < 0!", "", JOptionPane.ERROR_MESSAGE);
+
+        id = f.getId();
         statement = f.getStatement();
         flag = f.isFlag();
         init = f.isInit();
-        iden = f.getId();
-        if (iden < 0) JOptionPane.showMessageDialog(null, "Fact id < 0!", "", JOptionPane.ERROR_MESSAGE);
-        else id = iden;
     }
 
     public Fact(String str){
-        int iden = -1;
-        char[] mas = new char[str.length()];
 
-        str.getChars(0,str.length(),mas,0);
-
-        int i=1;
-        String id_str = "";
-        while(mas[i]!=':'){
-              id_str += mas[i];
-            i++;
+        if (str.matches("^[^:]+:[^:]+:[^:]+:[^:]+$")) {
+            throw new IllegalArgumentException("Cannot parse fact from string: " + str);
         }
 
-            id = Integer.parseInt(id_str);
+        String[] words = str.split(":");
 
-            i++; i++;
-            String statement_str = "";
-            while(mas[i]!='f'){
-                statement_str += mas[i];
-                i++;
-            }
-            statement = statement_str;
-
-            while(mas[i]!=':') i++;
-            i++; i++;
-            String flag_str = "";
-            while(mas[i]!=' '){
-                flag_str += mas[i];
-                i++;
-            }
-            flag = Boolean.parseBoolean(flag_str);
-
-            while(mas[i]!=':') i++;
-            i++; i++;
-            String init_str = "";
-            while(i<mas.length){
-                init_str += mas[i];
-                i++;
-            }
-            init = Boolean.parseBoolean(init_str);
-
+        id = Integer.parseInt(words[0]);
+        statement = words[1];
+        flag = Boolean.parseBoolean(words[2]);
+        init = Boolean.parseBoolean(words[3]);
     }
 
     @Override
