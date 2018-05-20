@@ -41,15 +41,16 @@ public class Fact {
         this.id = id;
     }
 
-    public Fact(String stat, boolean fl, boolean in, int iden){
+    public Fact(String stat, boolean fl, boolean in, int id){
         statement = stat;
         flag = fl;
         init = in;
-        if (iden < 0) JOptionPane.showMessageDialog(null, "Fact id < 0!", "", JOptionPane.ERROR_MESSAGE);
-        else id = iden;
+        if (id < 0) JOptionPane.showMessageDialog(null, "Fact id < 0!", "", JOptionPane.ERROR_MESSAGE);
+        else this.id = id;
     }
 
-    public String write(){
+    @Override
+    public String toString(){
         String str = "";
         str += "A" + id + ": " + statement + " flag: " + flag + " init: " + init + "\r\n";
         return str;
@@ -107,5 +108,20 @@ public class Fact {
             }
             init = Boolean.parseBoolean(init_str);
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Fact fact = (Fact) o;
+
+        return id == fact.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }

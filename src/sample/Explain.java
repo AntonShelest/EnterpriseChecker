@@ -97,7 +97,7 @@ public class Explain extends JFrame{
         } */
 
         str += core.description();
-        list_init_facts.setListData(core.getFbase().getListInit());
+        list_init_facts.setListData(core.getFbase().toActualData());
         textArea_explain.setText(str);
         core.clearChain();
         mainMenuButton.addActionListener(new ActionListener() {

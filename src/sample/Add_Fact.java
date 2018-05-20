@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static sample.BaseOfFacts.BASE_OF_FACTS_FILE_NAME;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Антоха
@@ -35,7 +37,7 @@ public class Add_Fact extends JFrame{
     private JLabel label_id;
     private JLabel label_erase_numb;
 
-    public Add_Fact(final Core core, final BaseOfFacts fbase, final BaseOfRules rbase, final Add_Rule rule_form){
+    public Add_Fact(final Core core, final BaseOfFacts fbase, final BaseOfRules rbase, final Add_Rule rule_form) {
         super("Editing the base of facts");
 
         this.setLocation(1024 / 2 - this.width, 768 / 2 - this.height / 2);
@@ -144,7 +146,7 @@ public class Add_Fact extends JFrame{
         core.getRbase().read(core);
 
         //Output facts into list
-        list_of_facts.setListData(fbase.getList());
+        list_of_facts.setListData(fbase.toData());
         scrollPane_List.getViewport().setView(list_of_facts);
 
         //Button "Add fact"
@@ -183,92 +185,74 @@ public class Add_Fact extends JFrame{
                     flag = checkBox_True.isSelected();
                     init = checkBox_Init.isSelected();
 
-                    fbase.add_fact(statement,flag,init,id);
-                    core.getFbase().writeInFile();
+                    fbase.addFact(statement,flag,init,id);
+                    BaseOfFacts factBase = core.getFbase();
+                    FileUtils.writeToFile(BASE_OF_FACTS_FILE_NAME, factBase.toString());
                     textField_Statement.setText("");
                     textField_id.setText("");
-                    list_of_facts.setListData(fbase.getList());
+                    list_of_facts.setListData(fbase.toData());
                 }
             }
         });
 
-        button_Eraise_Fact.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean id_flag = false;
-                boolean caution_flag = false; //флаг, предупреждающий, что удаляемый факт есть в правилах
+        button_Eraise_Fact.addActionListener(e -> {
+            boolean id_flag = false;
+            boolean caution_flag = false; //флаг, предупреждающий, что удаляемый факт есть в правилах
 
-                int id = -1;
-                try {id = Integer.parseInt(textField_erase_numb.getText());
-                    if (id >= 0){
-                        for(int i=0;i<fbase.getFacts().length;i++)
-                            if (fbase.getFacts()[i].getId() == id){
-                                id_flag = true;
-                                //Проверка, содержится ли удаляемый факт в правилах
-                                for(int j=0;j<rbase.getRules().length;j++){
-                                    for(int k=0;k<rbase.getRules()[j].getL_facts().length;k++)
-                                        if (rbase.getRules()[j].getL_facts()[k].getId() == id)
-                                            caution_flag = true;
-                                    if (rbase.getRules()[j].getR_fact().getId() == id)
+            int id = -1;
+            try {id = Integer.parseInt(textField_erase_numb.getText());
+                if (id >= 0){
+                    for(int i=0;i<fbase.getFacts().length;i++)
+                        if (fbase.getFacts()[i].getId() == id){
+                            id_flag = true;
+                            //Проверка, содержится ли удаляемый факт в правилах
+                            for(int j=0;j<rbase.getRules().length;j++){
+                                for(int k=0;k<rbase.getRules()[j].getL_facts().length;k++)
+                                    if (rbase.getRules()[j].getL_facts()[k].getId() == id)
                                         caution_flag = true;
-                                }
-                                if (caution_flag) JOptionPane.showMessageDialog(null,
-                                        "This fact is contained in base of rules! Regretfully, " +
-                                        "you can not erase this :(", "", JOptionPane.ERROR_MESSAGE);
-                                else if (id >= 0 && id <=3) JOptionPane.showMessageDialog(null,
-                                        "This fact is main. Regretfully, " +
-                                                "you can not erase this", "", JOptionPane.ERROR_MESSAGE);
+                                if (rbase.getRules()[j].getR_fact().getId() == id)
+                                    caution_flag = true;
                             }
-                    }
-                    else {JOptionPane.showMessageDialog(null,
-                            "Id of the fact can`t be negative!", "", JOptionPane.ERROR_MESSAGE);
-                        id_flag = false;
-                    }
-                    if (id_flag == false){
-                        JOptionPane.showMessageDialog(null,
-                                "No fact with such id!", "", JOptionPane.ERROR_MESSAGE);
-                    }
+                            if (caution_flag) JOptionPane.showMessageDialog(null,
+                                    "This fact is contained in base of rules! Regretfully, " +
+                                    "you can not erase this :(", "", JOptionPane.ERROR_MESSAGE);
+                            else if (id >= 0 && id <=3) JOptionPane.showMessageDialog(null,
+                                    "This fact is main. Regretfully, " +
+                                            "you can not erase this", "", JOptionPane.ERROR_MESSAGE);
+                        }
                 }
-                catch (Exception ee) {
-                    JOptionPane.showMessageDialog(null, "Enter integer for id!", "", JOptionPane.ERROR_MESSAGE);
+                else {JOptionPane.showMessageDialog(null,
+                        "Id of the fact can`t be negative!", "", JOptionPane.ERROR_MESSAGE);
                     id_flag = false;
                 }
-
-                if (id_flag && !caution_flag && !(id >= 0 && id <=3)) {
-                    fbase.erase_fact(id);
-                    core.getFbase().writeInFile();
-                    list_of_facts.setListData(fbase.getList());
-                    textField_erase_numb.setText("");
+                if (id_flag == false){
+                    JOptionPane.showMessageDialog(null,
+                            "No fact with such id!", "", JOptionPane.ERROR_MESSAGE);
                 }
             }
-        });
-        addRuleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            catch (Exception ee) {
+                JOptionPane.showMessageDialog(null, "Enter integer for id!", "", JOptionPane.ERROR_MESSAGE);
+                id_flag = false;
             }
-        });
-        saveChangesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                core.getFbase().writeInFile();
-            }
-        });
-        mainMenuButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                rule_form.setVisible(false);
-                Interface Form = new Interface(core, fbase, rbase);
-                Form.setVisible(true);
-            }
-        });
-        editRulesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-                rule_form.setVisible(true);
+            if (id_flag && !caution_flag && !(id >= 0 && id <=3)) {
+                fbase.removeFact(id);
+                BaseOfFacts factBase = core.getFbase();
+                FileUtils.writeToFile(BASE_OF_FACTS_FILE_NAME, factBase.toString());
+                list_of_facts.setListData(fbase.toData());
+                textField_erase_numb.setText("");
             }
         });
+        addRuleButton.addActionListener(e -> {
+        });
+        saveChangesButton.addActionListener(e -> FileUtils.writeToFile(BASE_OF_FACTS_FILE_NAME, core.getFbase().toString()));
+        mainMenuButton.addActionListener(e -> {
+            setVisible(false);
+            rule_form.setVisible(false);
+            Interface Form = new Interface(core, fbase, rbase);
+            Form.setVisible(true);
+        });
+        editRulesButton.addActionListener(e -> rule_form.setVisible(true));
     }
 
     }

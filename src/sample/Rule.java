@@ -51,7 +51,7 @@ public class Rule {
                         i_flag++;
                     }
         if (i_flag == l_facts.length){
-            fbase.change_fact(r_fact.getId(),r_fact);
+            fbase.changeFact(r_fact);
         }
     }
 
