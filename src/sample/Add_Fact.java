@@ -1,14 +1,8 @@
 package sample;
 
-import com.intellij.ui.components.JBList;
-
 import javax.swing.*;
-import javax.swing.table.TableColumnModel;
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.PropertyChangeListener;
-import java.beans.VetoableChangeListener;
-import javax.swing.JList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created with IntelliJ IDEA.
@@ -118,7 +112,7 @@ public class Add_Fact extends JFrame{
         label_erase_numb.setLocation(150,70);
         panel.add(label_erase_numb);
 
-        final JList list_of_facts = new JBList();
+        final JList list_of_facts = new JList();
         list_of_facts.setSize(250,200);
         list_of_facts.setLocation(20,150);
         panel.add(list_of_facts);

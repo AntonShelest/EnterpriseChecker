@@ -1,10 +1,8 @@
 package sample;
 
-import com.intellij.ui.components.JBList;
-
 import javax.swing.*;
-import java.awt.event.*;
-import javax.swing.JList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Add_Rule extends JFrame{
     private int width = 300;
@@ -129,7 +127,7 @@ public class Add_Rule extends JFrame{
         textField_right_part.setEditable(false);
         panel.add(textField_right_part);
 
-        final JList list_of_rules = new JBList();
+        final JList list_of_rules = new JList();
         list_of_rules.setSize(250,200);
         list_of_rules.setLocation(20,150);
         panel.add(list_of_rules);
