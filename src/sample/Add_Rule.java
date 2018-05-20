@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static sample.BaseOfRules.BASE_OF_RULES_FILE_NAME;
+
 public class Add_Rule extends JFrame{
     private int width = 300;
     private int height = 500;
@@ -147,7 +149,7 @@ public class Add_Rule extends JFrame{
 
         //Output rules into list
 
-        list_of_rules.setListData(rbase.getList());
+        list_of_rules.setListData(rbase.toData());
 
         scrollPane_List.getViewport().setView(list_of_rules);
         addRuleButton.addActionListener(new ActionListener() {
@@ -267,11 +269,11 @@ public class Add_Rule extends JFrame{
                 }
 
                 if (id_flag == false) {
-                    rbase.add_rule(l_part, r_part, id);
+                    rbase.addRule(l_part, r_part, id);
                     l_part = new Fact[0];
                     textField_left_part.setText("");
                     textField_right_part.setText("");
-                    list_of_rules.setListData(rbase.getList());
+                    list_of_rules.setListData(rbase.toData());
 
                     addRuleButton.setEnabled(false);
                     textField_add_id.setEditable(false);
@@ -282,44 +284,42 @@ public class Add_Rule extends JFrame{
                     //isLeftFactTrueCheckBox.setSelected(false);
                     //isRightFactTrueCheckBox.setSelected(false);
                 }
-        rbase.writeInFile();
+                FileUtils.writeToFile(BASE_OF_RULES_FILE_NAME, rbase.toString());
             }
         });
-        eraseRuleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean id_flag = false;
+        eraseRuleButton.addActionListener(e -> {
+            boolean id_flag = false;
 
-                int id = -1;
-                try {id = Integer.parseInt(textField_erase_rule.getText());
-                    if (id >= 0){
-                        for(int i=0;i<rbase.getRules().length;i++)
-                            if (rbase.getRules()[i].getId() == id){
-                                id_flag = true;
-                            }
-                    }
-                    else {JOptionPane.showMessageDialog(null,
-                            "Id of the fact can`t be negative!", "", JOptionPane.ERROR_MESSAGE);
-                        id_flag = false;
-                    }
-                    if (id_flag == false){
-                        JOptionPane.showMessageDialog(null,
-                                "No rule with such id!", "", JOptionPane.ERROR_MESSAGE);
-                    }
+            int id = -1;
+            try {id = Integer.parseInt(textField_erase_rule.getText());
+                if (id >= 0){
+                    for(int i=0;i<rbase.getRules().length;i++)
+                        if (rbase.getRules()[i].getId() == id){
+                            id_flag = true;
+                        }
                 }
-                catch (Exception ee) {
-                    JOptionPane.showMessageDialog(null, "Enter integer for id!", "", JOptionPane.ERROR_MESSAGE);
+                else {JOptionPane.showMessageDialog(null,
+                        "Id of the fact can`t be negative!", "", JOptionPane.ERROR_MESSAGE);
                     id_flag = false;
                 }
-
-                if (id_flag) {
-                    rbase.erase_rule(id);
-                    list_of_rules.setListData(rbase.getList());
-                    textField_erase_rule.setText("");
+                if (id_flag == false){
+                    JOptionPane.showMessageDialog(null,
+                            "No rule with such id!", "", JOptionPane.ERROR_MESSAGE);
                 }
-            core.getRbase().writeInFile();
+            }
+            catch (Exception ee) {
+                JOptionPane.showMessageDialog(null, "Enter integer for id!", "", JOptionPane.ERROR_MESSAGE);
+                id_flag = false;
             }
 
+            if (id_flag) {
+                final int ruleId = id;
+                rbase.removeRule(rbase.getRules().stream().filter(r -> r.getId() == ruleId).findFirst().orElse(null));
+                list_of_rules.setListData(rbase.toData());
+                textField_erase_rule.setText("");
+            }
+
+            FileUtils.writeToFile(BASE_OF_RULES_FILE_NAME, core.getRbase().toString());
         });
     }
 }

@@ -14,7 +14,6 @@ public class BaseOfFacts {
     private Set<Fact> facts = new HashSet<>();
 
 
-
     public Set<Fact> getFacts(){
         return facts;
     }
@@ -22,8 +21,6 @@ public class BaseOfFacts {
     public void setFacts(Set<Fact> facts) {
         this.facts = facts;
     }
-
-
 
     public void read() {
 

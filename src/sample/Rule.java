@@ -5,13 +5,13 @@ public class Rule {
         this.l_facts = l_facts;
     }
 
-    public Fact[] getL_facts() {
+    public Fact[] getLeftFacts() {
         return l_facts;
     }
 
     private Fact[] l_facts;
 
-    public Fact getR_fact() {
+    public Fact getRightFact() {
         return r_fact;
     }
 
@@ -82,11 +82,11 @@ public class Rule {
     }
 
     public Rule(Rule r){
-        l_facts = new Fact[r.getL_facts().length];
-        for(int i=0;i<r.getL_facts().length;i++)
-            l_facts[i] = new Fact(r.getL_facts()[i]);
+        l_facts = new Fact[r.getLeftFacts().length];
+        for(int i = 0; i<r.getLeftFacts().length; i++)
+            l_facts[i] = new Fact(r.getLeftFacts()[i]);
 
-        r_fact = new Fact(r.getR_fact());
+        r_fact = new Fact(r.getRightFact());
         id = r.getId();
     }
 
@@ -173,5 +173,20 @@ public class Rule {
                 r_fact.setFlag(!r_not_flag);
             }
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Rule rule = (Rule) o;
+
+        return id == rule.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }
