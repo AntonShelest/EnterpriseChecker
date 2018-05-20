@@ -16,7 +16,7 @@ public class Logging_form extends JFrame{
     private JButton backButton;
     private JPasswordField passwordField;
 
-    public Logging_form(final Core core, final Base_of_facts fbase, final Base_of_rules rbase){
+    public Logging_form(final Core core, final BaseOfFacts fbase, final BaseOfRules rbase){
         super("Logging");
 
         this.setLocation(1024 / 2 - this.width, 768 / 2 - this.height / 2);

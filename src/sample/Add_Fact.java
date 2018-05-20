@@ -35,7 +35,7 @@ public class Add_Fact extends JFrame{
     private JLabel label_id;
     private JLabel label_erase_numb;
 
-    public Add_Fact(final Core core, final Base_of_facts fbase,final Base_of_rules rbase, final Add_Rule rule_form){
+    public Add_Fact(final Core core, final BaseOfFacts fbase, final BaseOfRules rbase, final Add_Rule rule_form){
         super("Editing the base of facts");
 
         this.setLocation(1024 / 2 - this.width, 768 / 2 - this.height / 2);

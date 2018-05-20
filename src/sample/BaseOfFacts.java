@@ -1,22 +1,22 @@
 package sample;
 
-import com.sun.corba.se.impl.logging.OMGSystemException;
-
 import javax.swing.*;
 import java.io.*;
 
-public class Base_of_facts {
-    public File getFile() {
-        return file;
-    }
+public class BaseOfFacts {
 
     private File file;
-    private String fileName = "facts";
-    private boolean already_read_flag = false;
+    private Fact facts[];
+    private int number = 0;
 
+    private boolean already_read_flag = false;
 
     public Fact[] getFacts(){
         return facts;
+    }
+
+    public File getFile() {
+        return file;
     }
 
     public void setFacts(Fact[] facts) {
@@ -24,12 +24,10 @@ public class Base_of_facts {
         number = facts.length;
     }
 
-    private Fact facts[];
-    private int number = 0;
-
-    public Base_of_facts(){
+    public BaseOfFacts(){
         facts = new Fact[number];
 
+        String fileName = "facts";
         file = new File(fileName);
     }
 

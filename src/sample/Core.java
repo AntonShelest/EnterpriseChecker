@@ -1,8 +1,6 @@
 package sample;
 
-import java.io.File;
-
-    public class Core {
+public class Core {
 
     public int[] getRules_chain() {
         return rules_chain;
@@ -13,18 +11,16 @@ import java.io.File;
     }
 
     private int[] rules_chain;
+    private BaseOfFacts fbase;
+    private BaseOfRules rbase;
 
-    public Base_of_facts getFbase(){
+    public BaseOfFacts getFbase(){
         return fbase;
     }
 
-    private Base_of_facts fbase;
-
-    public Base_of_rules getRbase(){
+    public BaseOfRules getRbase(){
         return rbase;
     }
-
-    private Base_of_rules rbase;
 
     public void sweepRules(){
         for(int i=0;i<rbase.getRules().length;i++)
@@ -146,46 +142,13 @@ import java.io.File;
     }
 
     public Core(){
-        fbase = new Base_of_facts();
-        rbase = new Base_of_rules();
+        fbase = new BaseOfFacts();
+        rbase = new BaseOfRules();
         rules_chain = new int[0];
 
         Fact a0 = new Fact("Компания перспективна",true,false,0);
         Fact[] ff = {a0};
         fbase.setFacts(ff);
-
-        /*Fact a1 = new Fact("Прибыль положительна",true,true,1);
-        Fact a2 = new Fact("Собственный капитал превышает заёмный",true,true,2);
-        Fact a3 = new Fact("Цена на акции растет",true,false,3);
-        Fact a4 = new Fact("Выплачиваются дивиденды",true,true,4);
-        Fact a5 = new Fact("Слухи о компании оптимистичны",true,true,5);
-
-        Fact[] ff = {a0,a1,a2,a3,a4,a5};
-
-        //fbase.add_fact("Акции падают",true,true);
-        //fbase.add_fact("Долг растёт",true,true);
-        //fbase.add_fact("Директор сердчает",true,true);
-
-        fbase.setFacts(ff);
-
-        rbase = new Base_of_rules();
-
-        Fact[] r_left1 = new Fact[2];
-        r_left1[0] = new Fact(a4);
-        r_left1[1] = new Fact(a5);
-        Fact aa3 = new Fact(a3);
-        aa3.setInit(true);
-        aa3.setFlag(true);
-        rbase.add_rule(r_left1,aa3,0);
-
-        Fact[] r_left2 = new Fact[3];
-        r_left2[0] = new Fact(a1);
-        r_left2[1] = new Fact(a2);
-        r_left2[2] = new Fact(a3);
-        Fact aa0 = new Fact(a0);
-        aa0.setInit(true);
-        aa0.setFlag(true);
-        rbase.add_rule(r_left2,aa0,1);  */
 
         Interface Form = new Interface(this, fbase, rbase);
         Form.setVisible(true);

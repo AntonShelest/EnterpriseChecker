@@ -27,7 +27,7 @@ public class Add_Rule extends JFrame{
     private JTextField textField_add_id;
     private JTextField textField_erase_rule;
 
-    public Add_Rule(final Core core, final Base_of_facts fbase, final Base_of_rules rbase){
+    public Add_Rule(final Core core, final BaseOfFacts fbase, final BaseOfRules rbase){
         super("Editing the base of ruless");
 
         this.setLocation(1024 / 2, 768 / 2 - this.height / 2);

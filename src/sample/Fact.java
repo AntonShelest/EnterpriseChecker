@@ -2,14 +2,13 @@ package sample;
 
 import javax.swing.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Антоха
- * Date: 22.11.13
- * Time: 23:16
- * To change this template use File | Settings | File Templates.
- */
 public class Fact {
+
+    private String statement;
+    private boolean flag;
+    private boolean init;
+    private int id;
+
     public String getStatement() {
         return statement;
     }
@@ -17,8 +16,6 @@ public class Fact {
     public void setStatement(String statement) {
         this.statement = statement;
     }
-
-    private String statement;
 
     public boolean isFlag() {
         return flag;
@@ -28,8 +25,6 @@ public class Fact {
         this.flag = flag;
     }
 
-    private boolean flag;
-
     public boolean isInit() {
         return init;
     }
@@ -38,13 +33,13 @@ public class Fact {
         this.init = init;
     }
 
-    private boolean init;
-
     public int getId() {
         return id;
     }
 
-    private int id;
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Fact(String stat, boolean fl, boolean in, int iden){
         statement = stat;

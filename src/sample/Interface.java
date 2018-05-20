@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ContainerAdapter;
-import java.awt.event.ContainerEvent;
 
 public class Interface extends JFrame{
     public int getWidth() {
@@ -35,7 +33,7 @@ public class Interface extends JFrame{
     private JCheckBox checkBox1;
     private JTable table1;
 
-    public Interface(final Core core,final  Base_of_facts fbase,final  Base_of_rules rbase) {
+    public Interface(final Core core, final BaseOfFacts fbase, final BaseOfRules rbase) {
 
         this.setSize(this.getWidth(), this.getHeight());
         this.setLocation(1024 / 2 - this.getWidth() / 2, 768 / 2 - this.getHeight() / 2);

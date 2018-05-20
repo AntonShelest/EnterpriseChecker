@@ -3,20 +3,19 @@ package sample;
 import javax.swing.*;
 import java.io.*;
 
-public class Base_of_rules {
+public class BaseOfRules {
+
     private File file;
     private String fileName = "rules";
     private boolean already_read_flag = false;
+    private Rule[] rules;
+    private int number = 0;
 
     public Rule[] getRules() {
         return rules;
     }
 
-    private Rule[] rules;
-
-    private int number = 0;
-
-    public Base_of_rules(){
+    public BaseOfRules(){
         rules = new Rule[number];
 
         file = new File(fileName);
@@ -176,7 +175,7 @@ public class Base_of_rules {
 
         if (i_id == -1)
             JOptionPane.showMessageDialog(null,
-                    "Caution! Error in Base_of_rules.erase_rule",
+                    "Caution! Error in BaseOfRules.erase_rule",
                     "", JOptionPane.ERROR_MESSAGE);
 
         if (i_id>=0 && i_id<=rules.length-1){
@@ -206,8 +205,9 @@ public class Base_of_rules {
 
             number = rules.length;
         }
+
         else{
-            JOptionPane.showMessageDialog(null, "You try to delete rule with id, that is not exist!", "", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You try to delete rule with id, that does not exist!", "", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

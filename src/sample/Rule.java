@@ -1,12 +1,5 @@
 package sample;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Антоха
- * Date: 25.11.13
- * Time: 22:21
- * To change this template use File | Settings | File Templates.
- */
 public class Rule {
     public void setL_facts(Fact[] l_facts) {
         this.l_facts = l_facts;
@@ -48,7 +41,7 @@ public class Rule {
         return str;
     }
 
-    public void execute(Base_of_facts fbase){
+    public void execute(BaseOfFacts fbase){
         int i_flag = 0;
         for(int i=0;i<l_facts.length;i++)
             for(int j=0;j<fbase.getFacts().length;j++)
