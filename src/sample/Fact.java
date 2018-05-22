@@ -9,6 +9,8 @@ public class Fact {
     private boolean init;
     private int id;
 
+    private Object value;
+
     public String getStatement() {
         return statement;
     }
