@@ -36,7 +36,7 @@ public class BaseOfRules {
     }
 
     public void addRule(String str, Core core){
-        Rule rule = new Rule(str, core);
+        Rule rule = new Rule(str);
         addRule(rule.getLeftFacts(), rule.getRightFact(), rule.getId());
     }
 

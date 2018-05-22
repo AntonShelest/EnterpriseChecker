@@ -49,13 +49,6 @@ public class Fact {
         else this.id = id;
     }
 
-    @Override
-    public String toString(){
-        String str = "";
-        str += "A" + id + ": " + statement + " flag: " + flag + " init: " + init + "\r\n";
-        return str;
-    }
-
     public Fact(Fact f){
 
         if (f.getId() < 0) JOptionPane.showMessageDialog(null, "Fact id < 0!", "", JOptionPane.ERROR_MESSAGE);
@@ -93,5 +86,12 @@ public class Fact {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    @Override
+    public String toString(){
+        String str = "";
+        str += "A" + id + ": " + statement + " flag: " + flag + " init: " + init + "\r\n";
+        return str;
     }
 }

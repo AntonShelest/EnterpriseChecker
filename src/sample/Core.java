@@ -6,13 +6,13 @@ public class Core {
         return rules_chain;
     }
 
-    public void clearChain(){
-        rules_chain = new int[0];
-    }
-
     private int[] rules_chain;
     private BaseOfFacts fbase;
     private BaseOfRules rbase;
+
+    public void clearChain(){
+        rules_chain = new int[0];
+    }
 
     public BaseOfFacts getFbase(){
         return fbase;
